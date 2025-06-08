@@ -54,19 +54,15 @@ class _HomePageState extends State<HomePage> {
     List<String> items,
   ) {
     return ExpansionTile(
+      key: ValueKey('expansionTile_$index${_expandedIndex == index}'),
       title: Text(title),
       tilePadding: EdgeInsets.symmetric(horizontal: 32),
       childrenPadding: EdgeInsets.symmetric(horizontal: 32),
       initiallyExpanded: _expandedIndex == index,
       onExpansionChanged: (expanded) {
-        // si se expande actualiza el indice general
-        if (expanded) {
-          _expandedIndex = index;
-        } else {
-          _expandedIndex = null;
-        }
-        print(_expandedIndex);
-        print("$index - $expanded ");
+        setState(() {
+          _expandedIndex = expanded ? index : null;
+        });
       },
       children: items.map((item) => ListTile(title: Text(item))).toList(),
     );
