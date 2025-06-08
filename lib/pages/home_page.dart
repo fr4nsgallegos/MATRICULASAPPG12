@@ -71,6 +71,61 @@ class _HomePageState extends State<HomePage> {
   List<String> nombres = ["Jhonny", "Martia", "Teres", "Lucas"];
   int? _expandedIndex;
 
+  Widget expansionUniversidad(int index, UniversidadModel universidad) {
+    return ExpansionTile(
+      key: ValueKey('expansionTile_$index${_expandedIndex == index}'),
+      title: Text(universidad.nombre),
+      tilePadding: EdgeInsets.symmetric(horizontal: 32),
+      childrenPadding: EdgeInsets.symmetric(horizontal: 32),
+      initiallyExpanded: _expandedIndex == index,
+      onExpansionChanged: (expanded) {
+        setState(() {
+          _expandedIndex = expanded ? index : null;
+        });
+      },
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                universidad.matriculas.add(
+                  MatriculaModel(
+                    date: "07/06/2025",
+                    hour: "13:05",
+                    alumno: eliana,
+                    carrera: derecho,
+                    cursoEnCarrera: et01,
+                  ),
+                );
+                setState(() {});
+              },
+              child: Text("Agregar matrícula"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: () {
+                universidadesList.remove(universidad);
+                setState(() {});
+              },
+              child: Text("Eliminar Universidad"),
+            ),
+          ],
+        ),
+
+        ...universidad.matriculas.map(
+          (item) => MatriculaListtile(item, () {
+            universidad.matriculas.remove(item);
+            setState(() {});
+          }),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -94,22 +149,25 @@ class _HomePageState extends State<HomePage> {
         body: Center(
           child: Column(
             children: [
-              ...universidadesList.map((uni) {
-                return Column(
-                  children: [
-                    cabeceraUniverisdad(uni),
-                    ...uni.matriculas.map(
-                      (matricula) => MatriculaListtile(matricula, () {
-                        uni.matriculas.remove(matricula);
-                        setState(() {});
-                      }),
-                    ),
-                  ],
-                );
-              }),
+              for (int i = 0; i < universidadesList.length; i++)
+                expansionUniversidad(i, universidadesList[i]),
 
-              buildExpansionTileExample(0, "Grupo1", nombres),
-              buildExpansionTileExample(1, "Grupo2", nombres),
+              // ...universidadesList.map((uni) {
+              //   return Column(
+              //     children: [
+              //       cabeceraUniverisdad(uni),
+              //       ...uni.matriculas.map(
+              //         (matricula) => MatriculaListtile(matricula, () {
+              //           uni.matriculas.remove(matricula);
+              //           setState(() {});
+              //         }),
+              //       ),
+              //     ],
+              //   );
+              // }),
+
+              // buildExpansionTileExample(0, "Grupo1", nombres),
+              // buildExpansionTileExample(1, "Grupo2", nombres),
             ],
           ),
         ),
