@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:matriculasappg12/models/matricula_model.dart';
+import 'package:matriculasappg12/widgets/matricula_listtile.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -9,25 +11,17 @@ class HomePage extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-              ListTile(
-                title: Text("Jhonny Gallegos"),
-                subtitle: Text("Carrera Profesional"),
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    "https://cdn.pixabay.com/photo/2016/11/29/03/35/girl-1867092_1280.jpg",
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "TECSUP",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.arrow_forward),
-                  onPressed: () {},
-                ),
-                // onTap: () {}, //convierte el trailing en un boton
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
-                ),
-                tileColor: Colors.red,
+                  IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                ],
               ),
+              MatriculaListtile(matri01),
             ],
           ),
         ),
