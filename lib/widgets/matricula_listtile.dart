@@ -4,8 +4,9 @@ import 'package:matriculasappg12/models/matricula_model.dart';
 
 class MatriculaListtile extends StatelessWidget {
   MatriculaModel matricula;
+  VoidCallback funcion;
 
-  MatriculaListtile(this.matricula);
+  MatriculaListtile(this.matricula, this.funcion);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class MatriculaListtile extends StatelessWidget {
       ),
       trailing: IconButton(
         icon: Icon(Icons.delete, color: Colors.red),
-        onPressed: () {},
+        onPressed: funcion,
       ),
       // onTap: () {}, //convierte el trailing en un boton
 

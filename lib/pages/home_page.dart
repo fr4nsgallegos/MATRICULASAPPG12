@@ -54,7 +54,10 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     cabeceraUniverisdad(uni),
                     ...uni.matriculas.map(
-                      (matricula) => MatriculaListtile(matricula),
+                      (matricula) => MatriculaListtile(matricula, () {
+                        uni.matriculas.remove(matricula);
+                        setState(() {});
+                      }),
                     ),
                   ],
                 );
