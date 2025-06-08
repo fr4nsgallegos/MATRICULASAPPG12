@@ -3,6 +3,8 @@ import 'package:matriculasappg12/models/matricula_model.dart';
 import 'package:matriculasappg12/widgets/matricula_listtile.dart';
 
 class HomePage extends StatelessWidget {
+  List<MatriculaModel> matriculasList = [matri01, matri01];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,7 +23,10 @@ class HomePage extends StatelessWidget {
                   IconButton(onPressed: () {}, icon: Icon(Icons.add)),
                 ],
               ),
-              MatriculaListtile(matri01),
+              ...matriculasList.map((matricula) {
+                return MatriculaListtile(matricula);
+              }),
+              // MatriculaListtile(matri01),
             ],
           ),
         ),
