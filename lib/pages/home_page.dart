@@ -37,6 +37,13 @@ class _HomePageState extends State<HomePage> {
           },
           icon: Icon(Icons.add),
         ),
+        IconButton(
+          onPressed: () {
+            universidadesList.remove(universidad);
+            setState(() {});
+          },
+          icon: Icon(Icons.delete, color: Colors.orange),
+        ),
       ],
     );
   }
@@ -45,6 +52,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            universidadesList.add(
+              UniversidadModel(
+                nombre: "STANDFORD",
+                direccion: "EEUU 123123",
+                ruc: "98765465465422",
+                telefono: "0165968764",
+                carreras: [derecho],
+                matriculas: [],
+              ),
+            );
+            setState(() {});
+          },
+        ),
         appBar: AppBar(title: Text("Matriculas App")),
         body: Center(
           child: Column(
