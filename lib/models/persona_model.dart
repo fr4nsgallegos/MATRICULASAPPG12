@@ -1,4 +1,4 @@
-class PersonaModel {
+abstract class PersonaModel {
   String dni;
   String sexo;
   String nombre;

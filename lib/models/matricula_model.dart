@@ -17,3 +17,11 @@ class MatriculaModel {
     required this.cursoEnCarrera,
   });
 }
+
+MatriculaModel matri01 = MatriculaModel(
+  date: "8/6/25",
+  hour: "9:35",
+  alumno: jhonny,
+  carrera: telecomunicaciones,
+  cursoEnCarrera: mat01,
+);

@@ -11,3 +11,15 @@ class CursoEnCarreraModel {
     required this.semestre,
   });
 }
+
+CursoEnCarreraModel mat01 = CursoEnCarreraModel(
+  curso: matematica,
+  codigo: "mat01",
+  semestre: 1,
+);
+
+CursoEnCarreraModel et01 = CursoEnCarreraModel(
+  curso: etica,
+  codigo: "et01",
+  semestre: 2,
+);

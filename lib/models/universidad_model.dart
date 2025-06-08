@@ -15,3 +15,19 @@ class UniversidadModel {
     required this.carreras,
   });
 }
+
+UniversidadModel tecsup = UniversidadModel(
+  nombre: "TECSUP",
+  direccion: "AV LIMA123",
+  ruc: "20121254879",
+  telefono: "987654321",
+  carreras: [telecomunicaciones, geologia],
+);
+
+UniversidadModel uni2 = UniversidadModel(
+  nombre: "UNIVERSIDAD 2",
+  direccion: "AV EEUU 987",
+  ruc: "987654654654",
+  telefono: "13245679822",
+  carreras: [derecho],
+);
