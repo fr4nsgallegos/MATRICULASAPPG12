@@ -12,28 +12,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // List<MatriculaModel> matriculasList = [matri01, matri01];
   List<UniversidadModel> universidadesList = [tecsup, uni2];
 
-  Widget cabeceraUniverisdad(String nombreUniversidad) {
+  Widget cabeceraUniverisdad(UniversidadModel universidad) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          nombreUniversidad,
+          universidad.nombre,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         IconButton(
           onPressed: () {
-            // matriculasList.add(
-            //   MatriculaModel(
-            //     date: "07/06/2025",
-            //     hour: "13:05",
-            //     alumno: eliana,
-            //     carrera: derecho,
-            //     cursoEnCarrera: et01,
-            //   ),
-            // );
+            universidad.matriculas.add(
+              MatriculaModel(
+                date: "07/06/2025",
+                hour: "13:05",
+                alumno: eliana,
+                carrera: derecho,
+                cursoEnCarrera: et01,
+              ),
+            );
             setState(() {});
           },
           icon: Icon(Icons.add),
@@ -53,18 +52,13 @@ class _HomePageState extends State<HomePage> {
               ...universidadesList.map((uni) {
                 return Column(
                   children: [
-                    cabeceraUniverisdad(uni.nombre),
+                    cabeceraUniverisdad(uni),
                     ...uni.matriculas.map(
                       (matricula) => MatriculaListtile(matricula),
                     ),
                   ],
                 );
               }),
-
-              // ...matriculasList.map((matricula) {
-              //   return MatriculaListtile(matricula);
-              // }),
-              // MatriculaListtile(matri01),
             ],
           ),
         ),

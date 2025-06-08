@@ -18,7 +18,10 @@ class MatriculaListtile extends StatelessWidget {
       leading: CircleAvatar(
         backgroundImage: NetworkImage(matricula.alumno.urlImage),
       ),
-      trailing: IconButton(icon: Icon(Icons.arrow_forward), onPressed: () {}),
+      trailing: IconButton(
+        icon: Icon(Icons.delete, color: Colors.red),
+        onPressed: () {},
+      ),
       // onTap: () {}, //convierte el trailing en un boton
 
       // tileColor: Colors.red,
