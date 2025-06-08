@@ -48,6 +48,33 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget buildExpansionTileExample(
+    int index,
+    String title,
+    List<String> items,
+  ) {
+    return ExpansionTile(
+      title: Text(title),
+      tilePadding: EdgeInsets.symmetric(horizontal: 32),
+      childrenPadding: EdgeInsets.symmetric(horizontal: 32),
+      initiallyExpanded: _expandedIndex == index,
+      onExpansionChanged: (expanded) {
+        // si se expande actualiza el indice general
+        if (expanded) {
+          _expandedIndex = index;
+        } else {
+          _expandedIndex = null;
+        }
+        print(_expandedIndex);
+        print("$index - $expanded ");
+      },
+      children: items.map((item) => ListTile(title: Text(item))).toList(),
+    );
+  }
+
+  List<String> nombres = ["Jhonny", "Martia", "Teres", "Lucas"];
+  int? _expandedIndex;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -84,6 +111,9 @@ class _HomePageState extends State<HomePage> {
                   ],
                 );
               }),
+
+              buildExpansionTileExample(0, "Grupo1", nombres),
+              buildExpansionTileExample(1, "Grupo2", nombres),
             ],
           ),
         ),
